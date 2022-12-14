@@ -48,15 +48,33 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
 					title: Text(_pageName[selectedPage]),
+					backgroundColor: const Color(0xFFAC0000),
 					centerTitle: true,
 					),
         body: _pageOptions[selectedPage],
         bottomNavigationBar: BottomNavigationBar(
+					type: BottomNavigationBarType.fixed,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home, size: 30,), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.leaderboard, size:30), label: 'Leaderboard'),
-            BottomNavigationBarItem(icon: Icon(Icons.map, size:30), label: 'Map'),
-            BottomNavigationBarItem(icon: Icon(Icons.person, size:30), label: 'Person')
+            BottomNavigationBarItem(
+							icon: Icon(Icons.home, size: 30),
+							label: 'Home',
+							// backgroundColor: Color(0xFFAC0000)
+						),
+            BottomNavigationBarItem(
+							icon: Icon(Icons.leaderboard, size:30),
+							label: 'Leaderboard',
+							// backgroundColor: Color(0xFFAC0000)
+						),
+            BottomNavigationBarItem(
+							icon: Icon(Icons.map, size:30),
+							label: 'Map',
+							// backgroundColor: Color(0xFFAC0000)
+						),
+            BottomNavigationBarItem(
+							icon: Icon(Icons.person, size:30),
+							label: 'Person',
+							// backgroundColor: Color(0xFFAC0000)
+						)
           ],
 					currentIndex: selectedPage,
           onTap: (index) {
@@ -64,9 +82,8 @@ class _HomePageState extends State<HomePage> {
               selectedPage = index;
             });
           },
-					backgroundColor: Colors.blueAccent,
-					selectedItemColor: const Color(0xFFF0F0F0),
-					unselectedItemColor: const Color(0xFF101010),
+					backgroundColor: const Color(0xFF222222),
+					selectedItemColor: const Color(0xFFAC0000)
         ),
         persistentFooterAlignment: AlignmentDirectional.topCenter);
   }
