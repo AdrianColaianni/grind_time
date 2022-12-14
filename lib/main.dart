@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,18 +36,27 @@ class _HomePageState extends State<HomePage> {
     MapScreen(),
     AccountScreen()
   ];
+	final _pageName = [
+		'Home',
+		'Leaderboard',
+		'Map',
+		'Account'
+	];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(title: const Text('Grind Time'), centerTitle: true,),
+        appBar: AppBar(
+					title: Text(_pageName[selectedPage]),
+					centerTitle: true,
+					),
         body: _pageOptions[selectedPage],
         bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(icon: const Icon(Icons.home, size: 30,), label: 'Home'),
-            BottomNavigationBarItem(icon: const Icon(Icons.leaderboard, size:30), label: 'Leaderboard'),
-            BottomNavigationBarItem(icon: const Icon(Icons.map, size:30), label: 'Map'),
-            BottomNavigationBarItem(icon: const Icon(Icons.person, size:30), label: 'Person')
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home, size: 30,), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.leaderboard, size:30), label: 'Leaderboard'),
+            BottomNavigationBarItem(icon: Icon(Icons.map, size:30), label: 'Map'),
+            BottomNavigationBarItem(icon: Icon(Icons.person, size:30), label: 'Person')
           ],
 					currentIndex: selectedPage,
           onTap: (index) {
@@ -54,6 +64,9 @@ class _HomePageState extends State<HomePage> {
               selectedPage = index;
             });
           },
+					backgroundColor: Colors.blueAccent,
+					selectedItemColor: const Color(0xFFF0F0F0),
+					unselectedItemColor: const Color(0xFF101010),
         ),
         persistentFooterAlignment: AlignmentDirectional.topCenter);
   }
@@ -89,9 +102,18 @@ class LeaderboardScreen extends StatefulWidget {
 }
 
 class _LeaderboardScreenState extends State<LeaderboardScreen> {
+	final _leaderboard = generateWordPairs().take(40).toList();
+	// _leaderboard.addAll(generateWordPairs().take(15));
+
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Leaderbard Screen!'));
+		return ListView.builder(
+			itemBuilder: (context, i) {
+				return ListTile(
+					title: Text(_leaderboard[i].asPascalCase),
+				);},
+				itemCount: _leaderboard.length
+		);
   }
 }
 
