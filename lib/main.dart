@@ -53,27 +53,27 @@ class _HomePageState extends State<HomePage> {
 					),
         body: _pageOptions[selectedPage],
         bottomNavigationBar: BottomNavigationBar(
-					type: BottomNavigationBarType.fixed,
+					// type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
 							icon: Icon(Icons.home, size: 30),
 							label: 'Home',
-							// backgroundColor: Color(0xFFAC0000)
+							backgroundColor: Color(0xFFAC0000)
 						),
             BottomNavigationBarItem(
 							icon: Icon(Icons.leaderboard, size:30),
 							label: 'Leaderboard',
-							// backgroundColor: Color(0xFFAC0000)
+							backgroundColor: Color(0xFFAC0000)
 						),
             BottomNavigationBarItem(
 							icon: Icon(Icons.map, size:30),
 							label: 'Map',
-							// backgroundColor: Color(0xFFAC0000)
+							backgroundColor: Color(0xFFAC0000)
 						),
             BottomNavigationBarItem(
 							icon: Icon(Icons.person, size:30),
 							label: 'Person',
-							// backgroundColor: Color(0xFFAC0000)
+							backgroundColor: Color(0xFFAC0000)
 						)
           ],
 					currentIndex: selectedPage,
@@ -83,7 +83,8 @@ class _HomePageState extends State<HomePage> {
             });
           },
 					backgroundColor: const Color(0xFF222222),
-					selectedItemColor: const Color(0xFFAC0000)
+					selectedItemColor: Colors.white,
+					unselectedItemColor: Colors.black,
         ),
         persistentFooterAlignment: AlignmentDirectional.topCenter);
   }
