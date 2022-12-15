@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+import 'screens/account.dart';
+import 'screens/home.dart';
+import 'screens/leaderboard.dart';
+import 'screens/map.dart';
 
 void main() {
   runApp(const MyApp());
@@ -87,86 +90,5 @@ class _HomePageState extends State<HomePage> {
 					unselectedItemColor: Colors.black,
         ),
         persistentFooterAlignment: AlignmentDirectional.topCenter);
-  }
-}
-
-///////////////////////////////////////////////////////////
-// Home Screen
-///////////////////////////////////////////////////////////
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Home screen!'));
-  }
-}
-
-///////////////////////////////////////////////////////////
-// Leaderboard Screen
-///////////////////////////////////////////////////////////
-
-class LeaderboardScreen extends StatefulWidget {
-  const LeaderboardScreen({super.key});
-
-  @override
-  State<LeaderboardScreen> createState() => _LeaderboardScreenState();
-}
-
-class _LeaderboardScreenState extends State<LeaderboardScreen> {
-	final _leaderboard = generateWordPairs().take(40).toList();
-	// _leaderboard.addAll(generateWordPairs().take(15));
-
-  @override
-  Widget build(BuildContext context) {
-		return ListView.builder(
-			itemBuilder: (context, i) {
-				return ListTile(
-					title: Text(_leaderboard[i].asPascalCase),
-				);},
-				itemCount: _leaderboard.length
-		);
-  }
-}
-
-///////////////////////////////////////////////////////////
-// Map Screen
-///////////////////////////////////////////////////////////
-
-class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
-
-  @override
-  State<MapScreen> createState() => _MapScreenState();
-}
-
-class _MapScreenState extends State<MapScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Map Screen!'));
-  }
-}
-
-///////////////////////////////////////////////////////////
-// Account Screen
-///////////////////////////////////////////////////////////
-
-class AccountScreen extends StatefulWidget {
-  const AccountScreen({super.key});
-
-  @override
-  State<AccountScreen> createState() => _AccountScreenState();
-}
-
-class _AccountScreenState extends State<AccountScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Accout Screen!'));
   }
 }
