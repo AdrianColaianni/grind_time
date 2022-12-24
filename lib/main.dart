@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:grind_time/models/location.dart';
 import 'screens/account.dart';
 import 'screens/home.dart';
 import 'screens/leaderboard.dart';
@@ -39,56 +41,49 @@ class _HomePageState extends State<HomePage> {
     MapScreen(),
     AccountScreen()
   ];
-	final _pageName = [
-		'Home',
-		'Leaderboard',
-		'Map',
-		'Account'
-	];
+  final _pageName = ['Home', 'Leaderboard', 'Map', 'Account'];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-					title: Text(_pageName[selectedPage]),
-					backgroundColor: const Color(0xFFAC0000),
-					centerTitle: true,
-					),
-        body: _pageOptions[selectedPage],
-        bottomNavigationBar: BottomNavigationBar(
-					// type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-							icon: Icon(Icons.home, size: 30),
-							label: 'Home',
-							backgroundColor: Color(0xFFAC0000)
-						),
-            BottomNavigationBarItem(
-							icon: Icon(Icons.leaderboard, size:30),
-							label: 'Leaderboard',
-							backgroundColor: Color(0xFFAC0000)
-						),
-            BottomNavigationBarItem(
-							icon: Icon(Icons.map, size:30),
-							label: 'Map',
-							backgroundColor: Color(0xFFAC0000)
-						),
-            BottomNavigationBarItem(
-							icon: Icon(Icons.person, size:30),
-							label: 'Person',
-							backgroundColor: Color(0xFFAC0000)
-						)
-          ],
-					currentIndex: selectedPage,
-          onTap: (index) {
-            setState(() {
-              selectedPage = index;
-            });
-          },
-					backgroundColor: const Color(0xFF222222),
-					selectedItemColor: Colors.white,
-					unselectedItemColor: Colors.black,
-        ),
-        persistentFooterAlignment: AlignmentDirectional.topCenter);
+    return ChangeNotifierProvider(create: (context) => LocationService(),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(_pageName[selectedPage]),
+            backgroundColor: const Color(0xFFAC0000),
+            centerTitle: true,
+          ),
+          body: _pageOptions[selectedPage],
+          bottomNavigationBar: BottomNavigationBar(
+            // type: BottomNavigationBarType.fixed,
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home, size: 30),
+                  label: 'Home',
+                  backgroundColor: Color(0xFFAC0000)),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.leaderboard, size: 30),
+                  label: 'Leaderboard',
+                  backgroundColor: Color(0xFFAC0000)),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.map, size: 30),
+                  label: 'Map',
+                  backgroundColor: Color(0xFFAC0000)),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person, size: 30),
+                  label: 'Person',
+                  backgroundColor: Color(0xFFAC0000))
+            ],
+            currentIndex: selectedPage,
+            onTap: (index) {
+              setState(() {
+                selectedPage = index;
+              });
+            },
+            backgroundColor: const Color(0xFF222222),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.black,
+          ),
+          persistentFooterAlignment: AlignmentDirectional.topCenter)
+    );
   }
 }

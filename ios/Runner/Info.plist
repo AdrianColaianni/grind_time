@@ -47,5 +47,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>to time how long you spend in buildings</string>
 </dict>
 </plist>
